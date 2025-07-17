@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Mi personita especial</title>
+    <title>Declaración de Amor</title>
     <style>
       body {
         margin: 0;
@@ -26,11 +26,33 @@
 
       h1 {
         position: absolute;
-        top: 30px;
+        top: 20px;
         width: 100%;
-        font-size: 3em;
+        font-size: 2.5em;
         z-index: 2;
+        color: #ffb6c1;
         text-shadow: 0 0 10px #ff69b4;
+      }
+
+      .declaracion {
+        position: absolute;
+        top: 70%;
+        width: 100%;
+        font-size: 1.8em;
+        color: #fff;
+        z-index: 2;
+        text-shadow: 0 0 8px #ff1493;
+      }
+
+      .pregunta {
+        position: absolute;
+        top: 80%;
+        width: 100%;
+        font-size: 2.2em;
+        font-weight: bold;
+        color: #ff69b4;
+        z-index: 2;
+        text-shadow: 0 0 12px #ff69b4;
       }
 
       .heart {
@@ -77,8 +99,15 @@
     </style>
   </head>
   <body>
-    <h1>Mi personita especial</h1>
+    <h1>Eres lo más hermoso que me pasó</h1>
     <img src="image.png" class="background" />
+
+    <div class="declaracion">
+      Desde que te vi, mi mundo cambió. Tu sonrisa ilumina mis días, y tu forma
+      de ser me tiene completamente enamorado.
+    </div>
+
+    <div class="pregunta">¿Quieres ser mi novia?</div>
 
     <script>
       function createHeart() {
