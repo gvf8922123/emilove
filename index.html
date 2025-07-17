@@ -2,57 +2,75 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Declaración de Amor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¿Quieres ser mi novia?</title>
     <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        background: #000;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        color: white;
-        text-align: center;
+      * {
+        box-sizing: border-box;
       }
 
-      .background {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        max-height: 80vh;
-        z-index: 1;
+      body {
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(circle at top, #0f0c29, #302b63, #24243e);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+        overflow: hidden;
+      }
+
+      .container {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .image {
+        width: 90%;
+        max-width: 300px;
         border-radius: 20px;
-        box-shadow: 0 0 50px rgba(255, 0, 127, 0.5);
+        box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+        z-index: 1;
       }
 
       h1 {
-        position: absolute;
-        top: 20px;
-        width: 100%;
-        font-size: 2.5em;
-        z-index: 2;
+        font-size: 2em;
         color: #ffb6c1;
+        margin-bottom: 15px;
         text-shadow: 0 0 10px #ff69b4;
       }
 
-      .declaracion {
-        position: absolute;
-        top: 70%;
-        width: 100%;
-        font-size: 1.8em;
-        color: #fff;
+      .card {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 20px;
+        max-width: 400px;
+        margin-top: 20px;
         z-index: 2;
-        text-shadow: 0 0 8px #ff1493;
+        box-shadow: 0 0 20px rgba(255, 192, 203, 0.3);
       }
 
-      .pregunta {
-        position: absolute;
-        top: 80%;
-        width: 100%;
-        font-size: 2.2em;
+      .card p {
+        font-size: 1.2em;
+        line-height: 1.5;
+        margin: 0;
+        color: #fff;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+      }
+
+      .question {
+        margin-top: 25px;
+        font-size: 1.6em;
         font-weight: bold;
         color: #ff69b4;
+        text-shadow: 0 0 10px #ff69b4;
         z-index: 2;
-        text-shadow: 0 0 12px #ff69b4;
       }
 
       .heart {
@@ -64,6 +82,8 @@
         left: 50%;
         transform: translateX(-50%) rotate(45deg);
         animation: floatUp 5s linear infinite;
+        opacity: 0.8;
+        z-index: 0;
       }
 
       .heart::before,
@@ -96,25 +116,63 @@
           opacity: 0;
         }
       }
+
+      @media screen and (max-width: 500px) {
+        h1 {
+          font-size: 1.5em;
+        }
+        .card p {
+          font-size: 1em;
+        }
+        .question {
+          font-size: 1.3em;
+        }
+      }
     </style>
   </head>
   <body>
-    <h1>Eres lo más hermoso que me pasó</h1>
-    <img src="image.png" class="background" />
+    <div class="container">
+      <h1>Eres lo más hermoso que me pasó</h1>
+      <img src="image.png" alt="Mi personita especial" class="image" />
 
-    <div class="declaracion">
-      Desde que te vi, mi mundo cambió. Tu sonrisa ilumina mis días, y tu forma
-      de ser me tiene completamente enamorado.
+      <div class="card">
+        <p>
+          Desde el primer momento que te vi, supe que eras diferente.<br />
+          Tu sonrisa, tu voz, tus ojos... todo en ti me encanta.<br />
+          Esta página es solo una forma sencilla de decirte que me gustas
+          muchísimo.
+        </p>
+      </div>
+
+      <div class="question">¿Quieres ser mi novia? 💖</div>
     </div>
 
-    <div class="pregunta">¿Quieres ser mi novia?</div>
+    <!-- Música de fondo -->
+    <audio id="bg-music" autoplay loop>
+      <source src="wannabeyour.mp3" type="audio/mpeg" />
+      Tu navegador no soporta el audio.
+    </audio>
 
     <script>
+      // Iniciar música en primer toque si autoplay está bloqueado
+      document.addEventListener(
+        "click",
+        () => {
+          const music = document.getElementById("bg-music");
+          if (music.paused) {
+            music.play();
+          }
+        },
+        { once: true }
+      );
+
+      // Corazones animados flotando
       function createHeart() {
         const heart = document.createElement("div");
         heart.className = "heart";
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.animationDuration = 3 + Math.random() * 2 + "s";
+        heart.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
         document.body.appendChild(heart);
 
         setTimeout(() => {
